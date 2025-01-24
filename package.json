@@ -1,6 +1,6 @@
 {
-  "name": "@arunk4it/react-native-boilerplate",
-  "version": "1.0.0-beta.2",
+  "name": "@arunk4it/react-native-template",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -8,6 +8,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/codewitharun/rnboilerplate.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "template",
@@ -30,9 +33,5 @@
   "bugs": {
     "url": "https://github.com/codewitharun/rnboilerplate/issues"
   },
-  "homepage": "https://github.com/codewitharun/rnboilerplate#readme",
-  "description": "",
-  "dependencies": {
-    "@arunk4it/react-native-boilerplate": "^1.0.0"
-  }
+  "homepage": "https://github.com/codewitharun/rnboilerplate#readme"
 }

@@ -24,18 +24,7 @@ To upgrade to the latest version, run the following command:
 
 ```bash
 # Using npm
-npm install @arunk4it/react-native-boilerplate
+npm install rn-boilerplate-arun@latest
 # OR Using Yarn
-yarn add @arunk4it/react-native-boilerplate
-
-```
-
-### 📦 Installation
-
-To use your custom name to template use , run the following command:
-
-```bash
-# Replace your name with your desired name
-npx @react-native-community/cli@latest init appName --template @arunk4it/react-native-boilerplate@latest
-
+yarn add rn-boilerplate-arun@latest
 ```

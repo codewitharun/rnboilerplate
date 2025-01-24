@@ -1,4 +1,4 @@
 module.exports = {
-  placeholderName: "@arunk4it/react-native-boilerplate",
+  placeholderName: "@arunk4it/react-native-template",
   templateDir: "./template",
 };
