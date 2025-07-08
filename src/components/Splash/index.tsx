@@ -17,7 +17,7 @@ const Splash = () => {
     >
       <StatusBar hidden={true} />
 
-      <Text style={styles.midText}>ChotaMotaKaam</Text>
+      <Text style={styles.midText}>FlipToe</Text>
     </GradientScreenWrapper>
   );
 };

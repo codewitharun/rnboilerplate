@@ -1,5 +1,4 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { CreateUserResponse } from "@src/redux/api/types/userTypes";
 
 interface UserState {
@@ -14,20 +13,6 @@ const initialState: UserState = {
   user: {} as CreateUserResponse,
 };
 
-export const loginUser = createAsyncThunk(
-  "user/loginUser",
-  async (credentials: { email: string; password: string }, { dispatch }) => {
-    try {
-      if (credentials.email) {
-        await AsyncStorage.setItem("token", credentials.email);
-        return credentials.email; // Return the token (email in this case) directly
-      }
-    } catch (error) {
-      throw error;
-    }
-  }
-);
-
 const loginSlice = createSlice({
   name: "user",
   initialState,
@@ -41,14 +26,6 @@ const loginSlice = createSlice({
     updateUserRole: (state, action: PayloadAction<string>) => {
       state.role = action.payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(
-      loginUser.fulfilled,
-      (state, action: PayloadAction<string>) => {
-        state.token = action.payload;
-      }
-    );
   },
 });
 

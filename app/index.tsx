@@ -1,19 +1,24 @@
-import GradientScreenWrapper from "@components/GradientWrapper";
-import TypographyText from "@components/Typography/TypographyText";
-import React from "react";
-import { StyleSheet } from "react-native";
+// app/index.tsx
 
-const index = () => {
-  return (
-    <GradientScreenWrapper>
-      <TypographyText variant="heading2">Welcome to my page!!</TypographyText>
-      <TypographyText variant="subtitle">
-        Edit index.tsx and enjoy the journey
-      </TypographyText>
-    </GradientScreenWrapper>
+import { Redirect } from "expo-router";
+import { useEffect, useState } from "react";
+
+export default function Index() {
+  const [authenticated, setAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const checkAuth = async () => {
+      const token = "dfdsf";
+      setAuthenticated(!!token);
+    };
+    checkAuth();
+  }, []);
+
+  if (authenticated === null) return null;
+
+  return authenticated ? (
+    <Redirect href="/(tabs)/home" />
+  ) : (
+    <Redirect href="/login" />
   );
-};
-
-export default index;
-
-const styles = StyleSheet.create({});
+}

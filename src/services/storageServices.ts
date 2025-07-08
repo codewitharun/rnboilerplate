@@ -1,40 +1,47 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as SecureStore from "expo-secure-store";
 
+/**
+ * Store a secure key-value pair
+ */
 export const storeValue = async (key: string, data: string) => {
   try {
-    return await AsyncStorage.setItem(key, data);
+    await SecureStore.setItemAsync(key, data);
   } catch (error) {
     console.log("🚀 ~ storeValue ~ error:", error);
   }
 };
 
-export const getValue = async (data: string) => {
+/**
+ * Retrieve a value by key
+ */
+export const getValue = async (key: string): Promise<string | null> => {
   try {
-    return await AsyncStorage.getItem(data);
+    const value = await SecureStore.getItemAsync(key);
+    return value ?? null;
   } catch (error) {
     console.log("🚀 ~ getValue ~ error:", error);
+    return null;
   }
 };
 
-export const getAllKeys = async () => {
-  try {
-    return await AsyncStorage.getAllKeys();
-  } catch (error) {
-    console.log("🚀 ~ getAllKeys ~ error:", error);
-  }
-};
-
+/**
+ * Remove a value by key
+ */
 export const removeItem = async (key: string) => {
   try {
-    return await AsyncStorage.removeItem(key);
+    await SecureStore.deleteItemAsync(key);
   } catch (error) {
     console.log("🚀 ~ removeItem ~ error:", error);
   }
 };
 
-export const multiRemoveItems = async (arr: string[]) => {
+/**
+ * SecureStore does not support `getAllKeys` or `multiRemove` natively.
+ * You can track your keys manually using a separate "keys" list if needed.
+ */
+export const multiRemoveItems = async (keys: string[]) => {
   try {
-    return await AsyncStorage.multiRemove(arr);
+    await Promise.all(keys.map((key) => SecureStore.deleteItemAsync(key)));
   } catch (error) {
     console.log("🚀 ~ multiRemoveItems ~ error:", error);
   }

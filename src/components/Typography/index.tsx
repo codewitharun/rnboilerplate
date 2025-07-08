@@ -1,6 +1,7 @@
 // components/TypographyText.tsx
 import { fonts } from "@src/styles/fonts";
-import { FontSize, LineHeight } from "@utils/responsiveText";
+import { HP } from "@utils/constants";
+import { FontSize } from "@utils/responsiveText";
 import React from "react";
 import { Text, TextProps, TextStyle } from "react-native";
 
@@ -22,32 +23,32 @@ const variantStyles: Record<Variant, TextStyle> = {
   heading1: {
     fontFamily: fonts.loraBold,
     fontSize: FontSize.display,
-    lineHeight: LineHeight.loose,
+    lineHeight: HP(5),
   },
   heading2: {
     fontFamily: fonts.loraSemiBold,
     fontSize: FontSize.headline,
-    lineHeight: LineHeight.relaxed,
+    lineHeight: HP(4),
   },
   title: {
     fontFamily: fonts.loraSemiBold,
     fontSize: FontSize.title,
-    lineHeight: LineHeight.relaxed,
+    lineHeight: HP(3.5),
   },
   subtitle: {
     fontFamily: fonts.loraRegular,
     fontSize: FontSize.subtitle,
-    lineHeight: LineHeight.normal,
+    lineHeight: HP(3),
   },
   body: {
     fontFamily: fonts.questrial,
     fontSize: FontSize.body,
-    lineHeight: LineHeight.normal,
+    lineHeight: HP(2.3),
   },
   caption: {
     fontFamily: fonts.questrial,
     fontSize: FontSize.caption,
-    lineHeight: LineHeight.tight,
+    lineHeight: HP(1.8),
   },
 };
 

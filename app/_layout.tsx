@@ -3,7 +3,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
-import { StatusBar } from "react-native";
+import { StatusBar, View } from "react-native";
 import { DefaultTheme, PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
 
@@ -30,7 +30,9 @@ export default function RootLayout() {
   });
 
   const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) await SplashScreen.hideAsync();
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync();
+    }
   }, [fontsLoaded]);
 
   if (!fontsLoaded) return null;
@@ -38,8 +40,10 @@ export default function RootLayout() {
   return (
     <Provider store={store}>
       <PaperProvider theme={theme}>
-        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-        <Stack screenOptions={{ headerShown: false }} />
+        <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
+          <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+          <Stack screenOptions={{ headerShown: false }} />
+        </View>
       </PaperProvider>
     </Provider>
   );
